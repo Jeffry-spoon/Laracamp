@@ -26,7 +26,11 @@
                 <a href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                     {{-- cara memanggil data dari auth --}}
                     Halo, {{Auth::user()->name}}!
+                    @if (Auth::user()->avatar)
                     <img src="{{Auth::user()->avatar}}" class="user-photo" alt="" style="border-radius: 100%">
+                    @else
+                    <img src="https://ui-avatars.com/api/?name=admin" class="user-photo" alt="" style="border-radius: 100%">
+                    @endif
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="right: 0; left: auto">
                         <li>
                             <a href="{{route('dashboard')}}" class="dropdown-item">My Dashboard</a>
