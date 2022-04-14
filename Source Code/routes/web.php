@@ -24,17 +24,17 @@ Route::get('/', function () {
     return view('welcome');
 })-> name('welcome');
 
-
-
-
 // socialite routes
 Route::get('sign-in-google', [UserController::class, 'google'])->name('user.login.google');
 Route::get('auth/google/callback', [UserController::class, 'handleProviderCallback'])->name('user.google.callback');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+// midtrans routes
+Route::get('payment/success', [UserController::class,'midtransCallback']);
+Route::get('payment/success', [CheckoutController::class, 'midtransCallback']);
 
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth'])->name('dashboard');
 
 Route::middleware(['auth'])->group(function () {
     // Checkout routes
