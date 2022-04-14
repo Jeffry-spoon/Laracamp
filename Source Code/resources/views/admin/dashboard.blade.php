@@ -3,14 +3,14 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-8 offset-2">
+        <div class="col-6 offset-2 mt-3">
             <div class="card">
                 <div class="card-header">
                     My Camps
                 </div>
                 <div class="card_body">
                     @include('components.alert')
-                    <table class="table">
+                    <table class="table justify-center">
                         <thead>
                             <tr>
                                 <th>User</th>
@@ -27,9 +27,9 @@
                                     <td>{{$checkout->Camp->title}}</td>
                                     <td>
                                         <strong>
-                                            Rp. {{$checkout->Camp->price }} k
+                                           Rp.  {{$checkout->total}}
                                             @if ($checkout->discount_id)
-                                                <span class="badge bg-success">Disc {{$checkout->discount_percentage}}%</span>
+                                                 <span class="badge bg-success">Disc {{$checkout->discount_percentage}}%</span>
                                             @endif
                                         </strong>
                                     </td>
