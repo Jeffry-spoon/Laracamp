@@ -18,7 +18,6 @@
                                 <th>Price</th>
                                 <th>Register Data</th>
                                 <th>Paid Status</th>
-                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -28,7 +27,7 @@
                                     <td>{{$checkout->Camp->title}}</td>
                                     <td>
                                         <strong>
-                                            Rp. {{$checkout->total}}
+                                            Rp. {{$checkout->Camp->price }} k
                                             @if ($checkout->discount_id)
                                                 <span class="badge bg-success">Disc {{$checkout->discount_percentage}}%</span>
                                             @endif
@@ -36,21 +35,7 @@
                                     </td>
                                     <td>{{$checkout->created_at->format('M d Y')}}</td>
                                     <td>
-                                        @if ($checkout->is_pay)
-                                            <span class="badge bg-success">Paid</span>
-                                        @else
-                                            <span class="badge bg-warning">waiting</span>
-                                        @endif
-                                    </td>
-                                    <td>
-                                        @if (!$checkout->is_pay)
-                                        <form action="{{route('admin.checkout.update', $checkout->id)}}" method="post">
-                                            @csrf
-                                            <button class="btn btn-primary btn-sm">Set to paid</button>
-                                        </form>
-                                        @else
-
-                                        @endif
+                                       <strong>{{$checkout->payment_status}}</strong>
                                     </td>
                                 </tr>
                             @empty
